@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">jcliu-CardioBook</string>
+    <string name="systolic">Systolic:</string>
+    <string name="diastolic">Diastolic:</string>
+    <string name="heart_rate">Heart Rate:</string>
+    <string name="heart_hint">Heart Rate</string>
+    <string name="time">Time:</string>
+    <string name="time_hint">hh:mm</string>
+    <string name="date">Date:</string>
+    <string name="date_hint">dd/mm/yyyy</string>
+    <string name="comment">Comment</string>
+    <string name="pressure_hint">Pressure</string>
+</resources>
