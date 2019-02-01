@@ -11,4 +11,12 @@
         android:orderInCategory="0"
         app:showAsAction="always"/>
 
+    <item
+        android:enabled="true"
+        android:title="deleteRecording"
+        android:id="@+id/action_recording_delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:orderInCategory="1"
+        app:showAsAction="always"/>
+
 </menu>

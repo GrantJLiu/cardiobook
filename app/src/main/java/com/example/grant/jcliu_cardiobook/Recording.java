@@ -1,6 +1,9 @@
 package com.example.grant.jcliu_cardiobook;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,7 +14,10 @@ import java.util.TimeZone;
 /**
  * Made by Grant Liu, 30/01/2019
  */
-public class Recording {
+
+// Parcelable object code/learning:
+// https://www.sitepoint.com/transfer-data-between-activities-with-android-parcelable/
+public class Recording implements Parcelable {
     private Date date;
     private int systolic;
     private int diastolic;
@@ -19,11 +25,46 @@ public class Recording {
     private String comment;
 
     /**
-     * default constructor, sets date to current time
+     * writes the current state of the Recording to a parcel for use in other activities
+     * @param out parcel object to be outputted for useage
+     * @param flag flags (0/1) for Parcelable
      */
-    public Recording() {
-        this.date = Calendar.getInstance().getTime();
+    public void writeToParcel(Parcel out, int flag) {
+        out.writeLong(date.getTime());
+        out.writeInt(systolic);
+        out.writeInt(diastolic);
+        out.writeInt(heartRate);
+        out.writeString(comment);
     }
+
+    public Recording(Date date, int sys, int dia, int heartR, String comment) {
+        this.date = date;
+        this.systolic = sys;
+        this.diastolic = dia;
+        this.heartRate = heartR;
+        this.comment = comment;
+    }
+
+    public Recording(Parcel parcel){
+        date = new Date(parcel.readLong());
+        systolic = parcel.readInt();
+        diastolic = parcel.readInt();
+        heartRate = parcel.readInt();
+        comment = parcel.readString();
+    }
+
+    public static final Parcelable.Creator<Recording> CREATOR
+            = new Parcelable.Creator<Recording>() {
+        @Override
+        public Recording createFromParcel(Parcel parcel) {
+            return new Recording(parcel);
+        }
+
+        @Override
+        public Recording[] newArray(int size) {
+            return new Recording[0];
+        }
+    };
 
     /**
      * @return Current date stored in class
@@ -38,7 +79,7 @@ public class Recording {
      * @return formatted string date in yyyy-mm-d HH-mm (24 hr)
      */
     public String getDateFormatted(Context context) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm",
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm",
                 context.getResources().getConfiguration().locale);
         sdf.setTimeZone(TimeZone.getDefault());
         return sdf.format(this.date);
@@ -124,5 +165,10 @@ public class Recording {
      */
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    // required for parcelable
+    public int describeContents() {
+        return hashCode();
     }
 }

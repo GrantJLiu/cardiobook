@@ -7,7 +7,7 @@
     <string name="time">Time:</string>
     <string name="time_hint">hh:mm</string>
     <string name="date">Date:</string>
-    <string name="date_hint">dd/mm/yyyy</string>
+    <string name="date_hint">yyyy/mm/dd</string>
     <string name="comment">Comment</string>
     <string name="pressure_hint">Pressure</string>
 </resources>
