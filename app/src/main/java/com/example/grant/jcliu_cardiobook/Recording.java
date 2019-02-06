@@ -3,7 +3,6 @@ package com.example.grant.jcliu_cardiobook;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -26,7 +25,8 @@ public class Recording implements Parcelable {
 
     /**
      * writes the current state of the Recording to a parcel for use in other activities
-     * @param out parcel object to be outputted for useage
+     *
+     * @param out  parcel object to be outputted for useage
      * @param flag flags (0/1) for Parcelable
      */
     public void writeToParcel(Parcel out, int flag) {
@@ -45,7 +45,7 @@ public class Recording implements Parcelable {
         this.comment = comment;
     }
 
-    public Recording(Parcel parcel){
+    public Recording(Parcel parcel) {
         date = new Date(parcel.readLong());
         systolic = parcel.readInt();
         diastolic = parcel.readInt();
@@ -74,7 +74,6 @@ public class Recording implements Parcelable {
     }
 
     /**
-     *
      * @param context TODO
      * @return formatted string date in yyyy-mm-d HH-mm (24 hr)
      */
@@ -86,12 +85,13 @@ public class Recording implements Parcelable {
     }
 
     /**
+     * For completeness, never used in code since we usually just call the constructor
      *
-     * @param year year to set represented in integer
+     * @param year  year to set represented in integer
      * @param month month to be set as an integer
-     * @param day day to be set as an integer
-     * @param hour 24 hour time format
-     * @param min minute
+     * @param day   day to be set as an integer
+     * @param hour  24 hour time format
+     * @param min   minute
      */
     public void setDate(int year, int month, int day, int hour, int min) {
         Calendar calendar = Calendar.getInstance();
@@ -105,7 +105,6 @@ public class Recording implements Parcelable {
     }
 
     /**
-     *
      * @param systolic integer representing systolic pressure
      */
     public void setSystolic(int systolic) {
@@ -120,7 +119,6 @@ public class Recording implements Parcelable {
     }
 
     /**
-     *
      * @return stored diastolic pressure
      */
     public int getDiastolic() {
@@ -128,7 +126,6 @@ public class Recording implements Parcelable {
     }
 
     /**
-     *
      * @param diastolic integer representing diastolic pressure
      */
     public void setDiastolic(int diastolic) {
@@ -136,7 +133,6 @@ public class Recording implements Parcelable {
     }
 
     /**
-     *
      * @param heartRate integer representing heartrate (BPM)
      */
     public void setHeartRate(int heartRate) {
@@ -144,7 +140,6 @@ public class Recording implements Parcelable {
     }
 
     /**
-     *
      * @return heartrate in BPM
      */
     public int getHeartRate() {
@@ -152,7 +147,6 @@ public class Recording implements Parcelable {
     }
 
     /**
-     *
      * @return string of comment
      */
     public String getComment() {
@@ -160,7 +154,6 @@ public class Recording implements Parcelable {
     }
 
     /**
-     *
      * @param comment the comment to be set for the recording
      */
     public void setComment(String comment) {
